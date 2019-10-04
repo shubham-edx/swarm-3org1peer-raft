@@ -38,7 +38,7 @@ services:
       - ./config/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     deploy:
       placement:
-        constraints: [node.hostname == ip-172-31-41-242]
+        constraints: [node.hostname == ip-172-31-13-70]
 
   cli2:
     image: hyperledger/fabric-tools
@@ -72,7 +72,7 @@ services:
       - ./config/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     deploy:
       placement:
-        constraints: [node.hostname == ip-172-31-45-191]
+        constraints: [node.hostname == ip-172-31-5-104]
 
   cli3:
     image: hyperledger/fabric-tools
@@ -106,4 +106,4 @@ services:
       - ./config/channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     deploy:
       placement:
-        constraints: [node.hostname == ip-172-31-32-252]
+        constraints: [node.hostname == ip-172-31-13-70]

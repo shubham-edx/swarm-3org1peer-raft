@@ -45,7 +45,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org1.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-41-242]
+                constraints: [node.hostname == ip-172-31-5-196]
 
     ca_org2_example_com:
         image: hyperledger/fabric-ca:1.4.1
@@ -70,7 +70,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org2.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-45-191]
+                constraints: [node.hostname == ip-172-31-5-104]
 
     ca_org3_example_com:
         image: hyperledger/fabric-ca:1.4.1
@@ -95,7 +95,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org3.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-32-252]
+                constraints: [node.hostname == ip-172-31-13-70]
 
     ########################################################################
     ##################################ORDERERS##############################
@@ -130,7 +130,7 @@ services:
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/:/etc/hyperledger/msp/orderer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-41-242]
+                constraints: [node.hostname == ip-172-31-5-196]
 
     orderer1_example_com:
         image: hyperledger/fabric-orderer:1.4.1
@@ -161,7 +161,7 @@ services:
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/:/etc/hyperledger/msp/orderer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-45-191]
+                constraints: [node.hostname == ip-172-31-5-104]
 
     orderer2_example_com:
         image: hyperledger/fabric-orderer:1.4.1
@@ -192,7 +192,7 @@ services:
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/:/etc/hyperledger/msp/orderer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-32-252]
+                constraints: [node.hostname == ip-172-31-13-70]
 
     ########################################################################
     ##################################PEERS#################################
@@ -233,7 +233,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-41-242]
+                constraints: [node.hostname == ip-172-31-5-196]
 
     peer0_org2_example_com:
         image: hyperledger/fabric-peer:1.4.1
@@ -270,7 +270,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/:/etc/hyperledger/msp/peer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-45-191]
+                constraints: [node.hostname == ip-172-31-5-104]
 
     peer0_org3_example_com:
         image: hyperledger/fabric-peer:1.4.1
@@ -307,4 +307,4 @@ services:
             - ./config/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/:/etc/hyperledger/msp/peer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-32-252]
+                constraints: [node.hostname == ip-172-31-13-70]
