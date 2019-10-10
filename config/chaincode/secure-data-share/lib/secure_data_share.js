@@ -44,12 +44,10 @@ let secureDataShare = class {
 
         let uniqueID = args[0];
         let Transaction = {
-            encryptionKey: args[1],
-            hash: args[2],
-            fileName: args[3],
-            fileType: args[4],
-            ownerDID: args[5],
-            otherDetails: args[6]
+            SenderKey: args[1],
+            ReceiverKey: args[2],
+            Hash: args[3],
+            EncHash: args[4]
         };
 
         return stub.putState(uniqueID, Buffer.from(JSON.stringify(Transaction)))
