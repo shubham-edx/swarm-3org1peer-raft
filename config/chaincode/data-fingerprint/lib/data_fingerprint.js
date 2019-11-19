@@ -1,0 +1,63 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+'use strict';
+
+const shim = require('fabric-shim');
+const util = require('util');
+
+let dataFingerPrint = class {
+    async Init(stub) {
+        return stub.putState('dummyKey', Buffer.from('dummyValue'))
+            .then(() => {
+                console.info('Chaincode instantiation is successful');
+                return shim.success();
+            }, () => {
+                return shim.error();
+            });
+    }
+
+    async Invoke(stub) {
+        console.info('Transaction ID: ' + stub.getTxID());
+        console.info(util.format('Args: %j', stub.getArgs()));
+
+        let ret = stub.getFunctionAndParameters();
+        console.info(ret);
+
+        let method = this[ret.fcn];
+        if (!method) {
+            console.log('no function of name:' + ret.fcn + ' found');
+            throw new Error('Received unknown function ' + ret.fcn + ' invocation');
+        }
+        try {
+            console.info('Calling function: ' + ret.fcn);
+            let payload = await method(stub, ret.params, this);
+            return shim.success(payload);
+        } catch (err) {
+            console.log(err);
+            return shim.error(err);
+        }
+    }
+
+    async Fingerprint(stub, args) {
+
+        let uniqueID = args[0];
+        let Transaction = {
+            appname: args[1],
+            Userpwd: args[2],
+            Hash: args[3],
+            EncHash: args[4],
+            organization: args[5]
+        };
+
+        return stub.putState(uniqueID, Buffer.from(JSON.stringify(Transaction)))
+            .then(() => {
+                console.info('Chaincode instantiation is successful');
+            }, () => {
+                throw new Error('Error while commiting record into ledger');
+            });
+    }
+};
+
+shim.start(new dataFingerPrint());
