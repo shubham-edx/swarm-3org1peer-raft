@@ -45,7 +45,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org1.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-41-242]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     ca_org2_example_com:
         image: hyperledger/fabric-ca:1.4.1
@@ -70,7 +70,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org2.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-45-191]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     ca_org3_example_com:
         image: hyperledger/fabric-ca:1.4.1
@@ -95,7 +95,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org3.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-32-252]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     ########################################################################
     ##################################ORDERERS##############################
@@ -130,7 +130,7 @@ services:
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/:/etc/hyperledger/msp/orderer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-41-242]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     orderer1_example_com:
         image: hyperledger/fabric-orderer:1.4.1
@@ -161,7 +161,7 @@ services:
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/:/etc/hyperledger/msp/orderer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-45-191]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     orderer2_example_com:
         image: hyperledger/fabric-orderer:1.4.1
@@ -192,7 +192,7 @@ services:
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/:/etc/hyperledger/msp/orderer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-32-252]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     ########################################################################
     ##################################PEERS#################################
@@ -213,6 +213,7 @@ services:
             - CORE_PEER_ID=peer0.org1.example.com
             - CORE_PEER_ENDORSER_ENABLED=true
             - CORE_PEER_LOCALMSPID=Org1MSP
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
             - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/msp/
             - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
@@ -233,7 +234,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-41-242]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     peer0_org2_example_com:
         image: hyperledger/fabric-peer:1.4.1
@@ -250,6 +251,7 @@ services:
             - CORE_PEER_ID=peer0.org2.example.com
             - CORE_PEER_ENDORSER_ENABLED=true
             - CORE_PEER_LOCALMSPID=Org2MSP
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
             - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/msp/
             - CORE_PEER_ADDRESS=peer0.org2.example.com:7051
@@ -270,7 +272,7 @@ services:
             - ./config/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/:/etc/hyperledger/msp/peer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-45-191]
+                constraints: [node.hostname == subham-H310M-H-2-0]
 
     peer0_org3_example_com:
         image: hyperledger/fabric-peer:1.4.1
@@ -287,6 +289,7 @@ services:
             - CORE_PEER_ID=peer0.org3.example.com
             - CORE_PEER_ENDORSER_ENABLED=true
             - CORE_PEER_LOCALMSPID=Org3MSP
+            - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
             - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
             - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/peer/msp/
             - CORE_PEER_ADDRESS=peer0.org3.example.com:7051
@@ -307,4 +310,4 @@ services:
             - ./config/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/:/etc/hyperledger/msp/peer
         deploy:
             placement:
-                constraints: [node.hostname == ip-172-31-32-252]
+                constraints: [node.hostname == subham-H310M-H-2-0]
