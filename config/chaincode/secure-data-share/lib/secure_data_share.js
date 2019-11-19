@@ -7,7 +7,7 @@
 const shim = require('fabric-shim');
 const util = require('util');
 
-let stressTest = class {
+let secureDataShare = class {
     async Init(stub) {
         return stub.putState('dummyKey', Buffer.from('dummyValue'))
             .then(() => {
@@ -40,15 +40,17 @@ let stressTest = class {
         }
     }
 
-    async addRecord(stub, args) {
-        let id = args[0];
-        let key = args[1];
-        let record = {
-            id: id,
-            key: key
-        }
+    async shareMessage(stub, args) {
 
-        return stub.putState(id, Buffer.from(JSON.stringify(record)))
+        let uniqueID = args[0];
+        let Transaction = {
+            SenderKey: args[1],
+            ReceiverKey: args[2],
+            Hash: args[3],
+            EncHash: args[4]
+        };
+
+        return stub.putState(uniqueID, Buffer.from(JSON.stringify(Transaction)))
             .then(() => {
                 console.info('Chaincode instantiation is successful');
             }, () => {
@@ -57,4 +59,4 @@ let stressTest = class {
     }
 };
 
-shim.start(new stressTest());
+shim.start(new secureDataShare());

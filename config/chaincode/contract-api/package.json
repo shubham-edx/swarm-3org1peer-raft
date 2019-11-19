@@ -1,7 +1,7 @@
 {
-    "name": "stress-test",
+    "name": "contract-api",
     "version": "1.0.0",
-    "description": "This is the chaincode used in stress-test",
+    "description": "This is the chaincode used in contract-api",
     "engines": {
         "node": ">=8.4.0",
         "npm": ">=5.3.0"
@@ -10,7 +10,7 @@
         "clean": "rm -rf build && mkdir build",
         "build-server": "./node_modules/.bin/babel -d ./build ./app -s",
         "build": "npm run clean && npm run build-server",
-        "start": "node lib/stresstest.js"
+        "start": "node lib/contractApi.js"
     },
     "engine-strict": true,
     "license": "Apache-2.0",
