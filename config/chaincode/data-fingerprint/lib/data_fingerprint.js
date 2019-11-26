@@ -44,11 +44,9 @@ let dataFingerPrint = class {
 
         let uniqueID = args[0];
         let Transaction = {
-            appname: args[1],
-            Userpwd: args[2],
-            Hash: args[3],
-            EncHash: args[4],
-            organization: args[5]
+            Hash: args[1],
+            memo: args[2],
+            organization: args[3]
         };
 
         return stub.putState(uniqueID, Buffer.from(JSON.stringify(Transaction)))
