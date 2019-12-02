@@ -12,6 +12,14 @@
 
 version: "3"
 
+volumes:
+    orderer0_example_com:
+    orderer1_example_com:
+    orderer2_example_com:
+    peer0_org1_example_com:
+    peer0_org2_example_com:
+    peer0_org3_example_com:
+
 networks:
     fabric-overlay:
         external:
@@ -128,6 +136,7 @@ services:
         volumes:
             - ./config/channel-artifacts/:/etc/hyperledger/configtx
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/:/etc/hyperledger/msp/orderer
+            - orderer0_example_com:/var/hyperledger/production/orderer
         deploy:
             placement:
                 constraints: [node.hostname == ip-172-31-5-196]
@@ -159,6 +168,7 @@ services:
         volumes:
             - ./config/channel-artifacts/:/etc/hyperledger/configtx
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/:/etc/hyperledger/msp/orderer
+            - orderer1_example_com:/var/hyperledger/production/orderer
         deploy:
             placement:
                 constraints: [node.hostname == ip-172-31-5-104]
@@ -190,6 +200,7 @@ services:
         volumes:
             - ./config/channel-artifacts/:/etc/hyperledger/configtx
             - ./config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/:/etc/hyperledger/msp/orderer
+            - orderer2_example_com:/var/hyperledger/production/orderer
         deploy:
             placement:
                 constraints: [node.hostname == ip-172-31-13-70]
@@ -231,6 +242,7 @@ services:
         volumes:
             - /var/run/:/host/var/run/
             - ./config/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peer
+            - peer0_org1_example_com:/var/hyperledger/production
         deploy:
             placement:
                 constraints: [node.hostname == ip-172-31-5-196]
@@ -268,6 +280,7 @@ services:
         volumes:
             - /var/run/:/host/var/run/
             - ./config/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/:/etc/hyperledger/msp/peer
+            - peer0_org2_example_com:/var/hyperledger/production
         deploy:
             placement:
                 constraints: [node.hostname == ip-172-31-5-104]
@@ -305,6 +318,7 @@ services:
         volumes:
             - /var/run/:/host/var/run/
             - ./config/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/:/etc/hyperledger/msp/peer
+            - peer0_org3_example_com:/var/hyperledger/production
         deploy:
             placement:
                 constraints: [node.hostname == ip-172-31-13-70]
