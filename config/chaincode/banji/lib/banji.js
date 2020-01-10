@@ -47,7 +47,8 @@ let banji = class {
             password: args[1],
             filedetails: args[2],
             description: args[3],
-            hash: args[4]
+            hash: args[4],
+            latlong: args[5]
         };
 
         return stub.putState(uniqueID, Buffer.from(JSON.stringify(Transaction)))
